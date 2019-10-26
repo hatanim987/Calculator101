@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="lightBlack">#202020</color>
+    <color name="slateBlue">#6A5ACD</color>
+    <color name="darkSlateBlue">#483D8B</color>
+    <color name="Gold">#FFD700</color>
+    <color name="Bisque">#FF8C00</color>
+
+
+
+</resources>
