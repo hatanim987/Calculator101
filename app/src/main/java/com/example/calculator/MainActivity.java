@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -28,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_look);
+        setContentView(R.layout.activity_main);
 
         result = findViewById(R.id.result);
         newNumber = findViewById(R.id.newNumber);
@@ -53,8 +54,8 @@ public class MainActivity extends AppCompatActivity {
         Button buttonPlus = findViewById(R.id.buttonPlus);
         Button buttonNeg = findViewById(R.id.buttonNeg);
         Button buttonC = findViewById(R.id.buttonC);
-        Button buttonPercentage=findViewById(R.id.buttonPercentage);
-        Button buttonDelete=findViewById(R.id.buttonDelete);
+        Button buttonPercentage = findViewById(R.id.buttonPercentage);
+        Button buttonDelete = findViewById(R.id.buttonDelete);
 
         View.OnClickListener listener = new View.OnClickListener() {
             @Override
@@ -117,9 +118,9 @@ public class MainActivity extends AppCompatActivity {
         buttonDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(newNumber.getText().toString().length()!=0){
-                    String text=newNumber.getText().toString();
-                    newNumber.setText(text.substring(0,text.length()-1));
+                if (newNumber.getText().toString().length() != 0) {
+                    String text = newNumber.getText().toString();
+                    newNumber.setText(text.substring(0, text.length() - 1));
                 }
 
             }
@@ -142,6 +143,10 @@ public class MainActivity extends AppCompatActivity {
         buttonMultiply.setOnClickListener(opListener);
         buttonPercentage.setOnClickListener(opListener);
         buttonNeg.setOnClickListener(listenerForNeg);
+        // ATTENTION: This was auto-generated to handle app links.
+        Intent appLinkIntent = getIntent();
+        String appLinkAction = appLinkIntent.getAction();
+        Uri appLinkData = appLinkIntent.getData();
     }
 
 
@@ -158,7 +163,7 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case "/":
                     if (value == 0) {
-                        operand1 = 0.0;
+                        Toast.makeText(getApplicationContext(),R.string.cant_divide,Toast.LENGTH_LONG).show();
                     } else {
                         operand1 /= value;
                     }
@@ -174,8 +179,6 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case "%":
                     operand1=(operand1*value)/100;
-
-
             }
         }
         result.setText(operand1.toString());
